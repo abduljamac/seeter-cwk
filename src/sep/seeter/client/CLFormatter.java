@@ -1,3 +1,5 @@
+package sep.seeter.client;
+
 
 import java.io.IOException;
 import java.util.Iterator;
