@@ -1,5 +1,7 @@
 package sep.seeter.commands;
 
+import java.io.IOException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,6 +14,6 @@ package sep.seeter.commands;
  */
 public interface Command {
 
-    public abstract void execute();
+    public abstract void execute() throws IOException, ClassNotFoundException;
 
 }

@@ -13,31 +13,31 @@ import sep.seeter.net.message.Message;
  */
 public class CLFormatter {
 
-  static ClientChannel chan;  // Client-side channel for talking to a Seeter server
+//  static ClientChannel chan;  // Client-side channel for talking to a Seeter server
 
   CLFormatter(String host, int port) {
-    this.chan = new ClientChannel(host, port);
+//    this.chan = new ClientChannel(host, port);
   }
 
   /* Interact with Seeter server */
-
-  private void send(Message msg) throws IOException {
-    this.chan.send(msg);
-  }
-
-  private Message receive() throws IOException, ClassNotFoundException {
-    return this.chan.receive();
-  }
+//
+//  private void send(Message msg) throws IOException {
+//    this.chan.send(msg);
+//  }
+//
+//  private Message receive() throws IOException, ClassNotFoundException {
+//    return this.chan.receive();
+//  }
 
   /* Following are the auxiliary methods for formatting the UI text */
 
-  static String formatSplash(String user) {
+  public static String formatSplash(String user) {
     return "\nHello " + user + "!\n"
         + "Note:  Commands can be abbreviated to any prefix, "
         + "e.g., fe [mytopic].\n";
   }
 
-  static String formatMainMenuPrompt() {
+  public static String formatMainMenuPrompt() {
     return "\n[Main] Enter command: "
         + "fetch [mytopic], "
         + "compose [mytopic], "
@@ -45,7 +45,7 @@ public class CLFormatter {
         + "\n> ";
   }
 
-  static String formatDraftingMenuPrompt(String topic,
+  public static String formatDraftingMenuPrompt(String topic,
       List<String> lines) {
     return "\nDrafting: " + formatDrafting(topic, lines)
         + "\n[Drafting] Enter command: "
@@ -55,7 +55,7 @@ public class CLFormatter {
         + "\n> ";
   }
 
-  static String formatDrafting(String topic, List<String> lines) {
+  public static String formatDrafting(String topic, List<String> lines) {
     StringBuilder b = new StringBuilder("#");
     b.append(topic);
     int i = 1;
@@ -68,7 +68,7 @@ public class CLFormatter {
     return b.toString();
   }
 
-  static String formatFetched(String topic, List<String> users,
+  public static String formatFetched(String topic, List<String> users,
       List<String> fetched) {
     StringBuilder b = new StringBuilder("Fetched: #");
     b.append(topic);

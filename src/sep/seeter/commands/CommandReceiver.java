@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import sep.seeter.net.channel.ClientChannel;
+import sep.seeter.net.message.Bye;
 import sep.seeter.net.message.Message;
 import sep.seeter.net.message.SeetsReply;
 
@@ -41,7 +42,7 @@ public class CommandReceiver {
     public void setCommandState(CommandState commandState) {
         this.commandState = commandState;
     }
-    
+
     public String getUser() {
         return user;
     }
@@ -74,22 +75,25 @@ public class CommandReceiver {
         this.draftLines.add(line);
     }
 
-    public void deleteTask(String line) {
-        this.draftLines.remove(line);
-    }
-
     public void showAllTasks() {
         for (String draftLine : draftLines) {
             System.out.println(draftLine);
         }
     }
 
-    public <T extends Message> void sendMsg(T message) throws IOException {
-        channel.send(message);
+    public void send(Message msg) throws IOException {
+        this.channel.send(msg);
     }
 
-    public SeetsReply receiveMsg() throws IOException, ClassNotFoundException {
-        return (SeetsReply) channel.receive();
+    public Message receive() throws IOException, ClassNotFoundException {
+        return this.channel.receive();
+    }
+    
+    public void closeClient() throws IOException {
+        if (channel.isOpen()) {
+            channel.send(new Bye());
+            channel.close();
+        }
     }
 
 }

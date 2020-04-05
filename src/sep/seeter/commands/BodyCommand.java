@@ -5,6 +5,8 @@
  */
 package sep.seeter.commands;
 
+import java.io.IOException;
+
 /**
  *
  * @author abdul
@@ -18,7 +20,7 @@ public class BodyCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws IOException{
         String body = String.join(" ", command.getRawArgs());
         command.addDraftLine(body);
     }

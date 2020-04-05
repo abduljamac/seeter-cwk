@@ -5,6 +5,7 @@
  */
 package sep.seeter.commands;
 
+import java.io.IOException;
 
 
 /**
@@ -19,7 +20,7 @@ public class CommandInvoker {
         this.command = command;
     }
 
-    public void executeCommand() {
+    public void executeCommand() throws IOException {
         command.execute();
     }
 }

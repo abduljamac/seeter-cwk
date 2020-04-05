@@ -26,6 +26,8 @@ public class CommandWords {
         commandHolder.put("exit", new ExitCommand(command));
         commandHolder.put("compose", new ComposeCommand(command));
         commandHolder.put("body", new BodyCommand(command));
+        commandHolder.put("send", new SendCommand(command));
+        commandHolder.put("fetch", new FetchCommand(command));
     }
 
     public Command getCommandHolder(String cmd) {
