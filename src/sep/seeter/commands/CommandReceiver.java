@@ -7,6 +7,7 @@ package sep.seeter.commands;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import sep.seeter.net.channel.ClientChannel;
 import sep.seeter.net.message.Message;
 import sep.seeter.net.message.SeetsReply;
@@ -21,7 +22,7 @@ public class CommandReceiver {
     private String user;
     private String[] rawArgs;
     private String draftTopic;
-    private ArrayList<String> draftLines;
+    private List<String> draftLines;
     private final ClientChannel channel;
 
     public CommandReceiver(ClientChannel channel, String user) {
@@ -29,7 +30,7 @@ public class CommandReceiver {
         this.user = user;
         this.rawArgs = rawArgs;
         this.draftTopic = draftTopic;
-        this.draftLines = draftLines;
+        this.draftLines = new ArrayList<>();
         this.channel = channel;
     }
 
@@ -61,11 +62,11 @@ public class CommandReceiver {
         this.draftTopic = draftTopic;
     }
 
-    public ArrayList<String> getDraftLines() {
+    public List<String> getDraftLines() {
         return draftLines;
     }
 
-    public void setDraftLines(ArrayList<String> draftLines) {
+    public void setDraftLines(List<String> draftLines) {
         this.draftLines = draftLines;
     }
 

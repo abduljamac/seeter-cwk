@@ -111,8 +111,8 @@ public class Client {
                 System.out.print(helper.formatSplash(this.user));
             }
             CommandWords commandWords = new CommandWords(commandReciever);
-//            loop(helper, reader);
             runCommandLoop(helper, reader, commandWords);
+//            loop(helper, reader);
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         } finally {
@@ -135,6 +135,9 @@ public class Client {
             if (CommandState.MAIN.equals(commandReciever.getCommandState())) {
                 System.out.print(helper.formatMainMenuPrompt());
             } else {
+                System.out.println("Error Occured Here");
+                System.out.println(commandReciever.getDraftTopic());
+                System.out.println(commandReciever.getDraftLines());
                 System.out.print(helper.formatDraftingMenuPrompt(commandReciever.getDraftTopic(), commandReciever.getDraftLines()));
             }
 
@@ -148,8 +151,8 @@ public class Client {
                     .map(x -> x.trim()).collect(Collectors.toList());
             String cmd = split.remove(0);  // First word is the command keyword
             String[] rawArgs = split.toArray(new String[split.size()]);
-
-            commandReciever.setRawArgs(split.toArray(new String[0]));
+//            System.out.println(rawArgs[0]);
+            commandReciever.setRawArgs(rawArgs);
 
             Command command = new CommandWords(commandReciever).getCommandHolder(cmd);
             command.execute();
@@ -176,8 +179,9 @@ public class Client {
             if (state.equals("Main")) {
                 System.out.print(helper.formatMainMenuPrompt());
             } else {  // state = "Drafting"
-                System.out.print(helper.
-                        formatDraftingMenuPrompt(draftTopic, draftLines));
+                System.out.println(draftTopic);
+                System.out.println(draftLines);
+                System.out.print(helper.formatDraftingMenuPrompt(draftTopic, draftLines));
             }
 
             // Read a line of user input

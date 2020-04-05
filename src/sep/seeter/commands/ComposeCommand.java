@@ -21,9 +21,6 @@ public class ComposeCommand implements Command {
     public void execute() {
       command.setCommandState(CommandState.DRAFTING);
       command.setDraftTopic(command.getRawArgs()[0]);
-      
     }
     
-    
-
 }
