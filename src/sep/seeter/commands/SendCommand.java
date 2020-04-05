@@ -24,7 +24,7 @@ public class SendCommand implements Command {
 
     @Override
     public void execute() throws IOException {
-        command.send(new Publish(command.getUser(), command.getDraftTopic(), command.getDraftLines()));
+        command.send(new Publish( command.getUser(), command.getDraftTopic(), command.getDraftLines() ));
         command.setCommandState(CommandState.MAIN);
         command.setDraftTopic(null);
     }

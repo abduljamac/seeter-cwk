@@ -21,7 +21,7 @@ public class BodyCommand implements Command {
 
     @Override
     public void execute() throws IOException{
-        String body = String.join(" ", command.getRawArgs());
+        String body = String.join( " ", command.getRawArgs() );
         command.addDraftLine(body);
     }
 

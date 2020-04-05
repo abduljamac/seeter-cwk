@@ -16,11 +16,11 @@ public class CommandInvoker {
 
     private Command command;
 
-    public void setCommand(Command command) {
+    public void setCommand( Command command ) {
         this.command = command;
     }
 
-    public void executeCommand() throws IOException {
+    public void executeCommand() throws IOException, ClassNotFoundException {
         command.execute();
     }
 }
