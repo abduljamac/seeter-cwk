@@ -9,21 +9,17 @@ package sep.seeter.commands;
  *
  * @author abdul
  */
-public class ComposeCommand implements Command {
-
+public class ExitCommand implements Command {
+   
     private final CommandReceiver command;
 
-    public ComposeCommand(CommandReceiver command) {
+    public ExitCommand(CommandReceiver command) {
         this.command = command;
     }
-
+   
     @Override
     public void execute() {
-      command.setCommandState(CommandState.DRAFTING);
-      command.setDraftTopic(command.getRawArgs()[0]);
-      
+        command.setCommandState(CommandState.TERMINATED);
     }
     
-    
-
 }

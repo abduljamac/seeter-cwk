@@ -25,7 +25,7 @@ public class CommandReceiver {
     private final ClientChannel channel;
 
     public CommandReceiver(ClientChannel channel, String user) {
-        this.commandState = commandState;
+        this.commandState = commandState.MAIN;
         this.user = user;
         this.rawArgs = rawArgs;
         this.draftTopic = draftTopic;

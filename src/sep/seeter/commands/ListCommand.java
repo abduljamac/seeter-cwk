@@ -11,16 +11,11 @@ package sep.seeter.commands;
  */
 public class ListCommand implements Command {
 
-    private CommandReceiver command;
-
-    public ListCommand(CommandReceiver command) {
-        this.command = command;
-    }
-        
-    
     @Override
     public void execute() {
-        command.showAllTasks();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
     
 }

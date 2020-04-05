@@ -9,7 +9,20 @@ package sep.seeter.commands;
  *
  * @author abdul
  */
-public class BodyCommand implements Command{
-    
-  
+public class BodyCommand implements Command {
+
+    private final CommandReceiver command;
+    private String body;
+
+    public BodyCommand(CommandReceiver command, String body) {
+        this.command = command;
+        this.body = body;
+    }
+
+    @Override
+    public void execute() {
+        body = String.join(" ", command.getRawArgs());
+        command.addDraftLine(body);
+    }
+
 }

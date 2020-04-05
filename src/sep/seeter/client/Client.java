@@ -13,6 +13,7 @@ import sep.seeter.net.message.Publish;
 import sep.seeter.net.message.SeetsReply;
 import sep.seeter.net.message.SeetsReq;
 import sep.seeter.commands.*;
+import sep.seeter.net.channel.ClientChannel;
 
 /**
  * This class is an initial work-in-progress prototype for a command line Seeter
@@ -70,7 +71,7 @@ public class Client {
     private String user;
     private String host;
     private int port;
-    private final CommandReceiver commandReciever;
+    private CommandReceiver commandReciever;
 
     public boolean printSplash = true;
 
@@ -78,10 +79,8 @@ public class Client {
         this.user = user;
         this.host = host;
         this.port = port;
-        
-        this.commandReciever = new CommandReceiver(new CommandReceiver(host, port), user);
-        
 
+//        this.commandReciever = new CommandReceiver(new ClientChannel(host, port), user);
         if (this.user.isEmpty() || this.host.isEmpty() || checkPort(this.port)) {
             System.err.println("Please check if User, Host or Port has been set!");
             System.exit(1);
@@ -111,7 +110,9 @@ public class Client {
             if (this.printSplash = true) {
                 System.out.print(helper.formatSplash(this.user));
             }
-            loop(helper, reader);
+            CommandWords commandWords = new CommandWords(commandReciever);
+//            loop(helper, reader);
+            runCommandLoop(helper, reader, commandWords);
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         } finally {
@@ -124,10 +125,37 @@ public class Client {
         }
     }
 
-    private void runCommandLoop(CLFormatter helper, BufferedReader reader) throws IOException,
+    private void runCommandLoop(CLFormatter helper, BufferedReader reader, CommandWords commandWords) throws IOException,
             ClassNotFoundException {
 
-       
+        commandReciever = new CommandReceiver(new ClientChannel(host, port), user);
+
+        while(!CommandState.TERMINATED.equals(commandReciever.getCommandState())) {
+
+            if (CommandState.MAIN.equals(commandReciever.getCommandState())) {
+                System.out.print(helper.formatMainMenuPrompt());
+            } else {
+                System.out.print(helper.formatDraftingMenuPrompt(commandReciever.getDraftTopic(), commandReciever.getDraftLines()));
+            }
+
+            String raw = reader.readLine();
+            if (raw == null) {
+                throw new IOException("Input stream closed while reading.");
+            }
+
+            // Trim leading/trailing white space, and split words according to spaces
+            List<String> split = Arrays.stream(raw.trim().split("\\ "))
+                    .map(x -> x.trim()).collect(Collectors.toList());
+            String cmd = split.remove(0);  // First word is the command keyword
+            String[] rawArgs = split.toArray(new String[split.size()]);
+
+            commandReciever.setRawArgs(split.toArray(new String[0]));
+
+            Command command = new CommandWords(commandReciever).getCommandHolder(cmd);
+            command.execute();
+             
+        }
+
     }
 
 // Main loop: print user options, read user input and process
