@@ -3,17 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sep.seeter.command;
+package sep.seeter.commands;
 
 /**
  *
  * @author abdul
  */
-public class ComposeCommand implements Command {
+public class ListCommand implements Command {
 
+    private CommandReceiver command;
+
+    public ListCommand(CommandReceiver command) {
+        this.command = command;
+    }
+        
+    
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        command.showAllTasks();
     }
     
 }

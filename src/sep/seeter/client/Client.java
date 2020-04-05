@@ -12,6 +12,7 @@ import sep.seeter.net.message.Bye;
 import sep.seeter.net.message.Publish;
 import sep.seeter.net.message.SeetsReply;
 import sep.seeter.net.message.SeetsReq;
+import sep.seeter.commands.*;
 
 /**
  * This class is an initial work-in-progress prototype for a command line Seeter
@@ -66,16 +67,20 @@ import sep.seeter.net.message.SeetsReq;
  */
 public class Client {
 
-    String user;
-    String host;
-    int port;
+    private String user;
+    private String host;
+    private int port;
+    private final CommandReceiver commandReciever;
 
-    boolean printSplash = true;
+    public boolean printSplash = true;
 
     public Client(String user, String host, int port) {
         this.user = user;
         this.host = host;
         this.port = port;
+        
+        this.commandReciever = new CommandReceiver(new CommandReceiver(host, port), user);
+        
 
         if (this.user.isEmpty() || this.host.isEmpty() || checkPort(this.port)) {
             System.err.println("Please check if User, Host or Port has been set!");
@@ -96,24 +101,14 @@ public class Client {
     }
 
     // Run the client
-    @SuppressFBWarnings(
-            value = "DM_DEFAULT_ENCODING",
-            justification = "When reading console, ignore default encoding warning")
+    @SuppressFBWarnings(value = "DM_DEFAULT_ENCODING", justification = "When reading console, ignore default encoding warning")
     void run() throws IOException {
-
         BufferedReader reader = null;
         CLFormatter helper = null;
         try {
             reader = new BufferedReader(new InputStreamReader(System.in));
-
-            if (this.user.isEmpty() || this.host.isEmpty()) {
-                System.err.println("User/host has not been set.");
-                System.exit(1);
-            }
             helper = new CLFormatter(this.host, this.port);
-
-            if (this.printSplash = true);
-            {
+            if (this.printSplash = true) {
                 System.out.print(helper.formatSplash(this.user));
             }
             loop(helper, reader);
@@ -129,18 +124,12 @@ public class Client {
         }
     }
 
-    
-    private void runCommand(CLFormatter helper, BufferedReader reader)throws IOException,
-            ClassNotFoundException  {
-        
-        for (boolean done = false; !done;) {
-            
-            
-        }
-        
+    private void runCommandLoop(CLFormatter helper, BufferedReader reader) throws IOException,
+            ClassNotFoundException {
+
        
-    
     }
+
 // Main loop: print user options, read user input and process
     void loop(CLFormatter helper, BufferedReader reader) throws IOException,
             ClassNotFoundException {

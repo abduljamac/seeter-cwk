@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sep.seeter.command;
+package sep.seeter.commands;
 
 /**
  *
  * @author abdul
  */
-public class BodyCommand {
+public class ComposeCommand implements Command {
     
+ 
 }
