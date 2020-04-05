@@ -25,6 +25,7 @@ public class CommandWords {
     public void populateCommandController(CommandReceiver command) {
         commandHolder.put("exit", new ExitCommand(command));
         commandHolder.put("compose", new ComposeCommand(command));
+        commandHolder.put("body", new BodyCommand(command));
     }
 
     public Command getCommandHolder(String cmd) {

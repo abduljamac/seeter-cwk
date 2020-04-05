@@ -12,16 +12,14 @@ package sep.seeter.commands;
 public class BodyCommand implements Command {
 
     private final CommandReceiver command;
-    private String body;
 
-    public BodyCommand(CommandReceiver command, String body) {
+    public BodyCommand(CommandReceiver command) {
         this.command = command;
-        this.body = body;
     }
 
     @Override
     public void execute() {
-        body = String.join(" ", command.getRawArgs());
+        String body = String.join(" ", command.getRawArgs());
         command.addDraftLine(body);
     }
 

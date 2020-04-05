@@ -80,7 +80,6 @@ public class Client {
         this.host = host;
         this.port = port;
 
-//        this.commandReciever = new CommandReceiver(new ClientChannel(host, port), user);
         if (this.user.isEmpty() || this.host.isEmpty() || checkPort(this.port)) {
             System.err.println("Please check if User, Host or Port has been set!");
             System.exit(1);
@@ -135,9 +134,9 @@ public class Client {
             if (CommandState.MAIN.equals(commandReciever.getCommandState())) {
                 System.out.print(helper.formatMainMenuPrompt());
             } else {
-                System.out.println("Error Occured Here");
-                System.out.println(commandReciever.getDraftTopic());
-                System.out.println(commandReciever.getDraftLines());
+//                System.out.println("Error Occured Here");
+//                System.out.println(commandReciever.getDraftTopic());
+//                System.out.println(commandReciever.getDraftLines());
                 System.out.print(helper.formatDraftingMenuPrompt(commandReciever.getDraftTopic(), commandReciever.getDraftLines()));
             }
 
