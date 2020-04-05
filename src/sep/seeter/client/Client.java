@@ -145,7 +145,7 @@ public class Client {
 
             Command command = new CommandWords(commandReciever).getCommandHolder(cmd);
             command.execute();
-
+            
         }
     }
 
