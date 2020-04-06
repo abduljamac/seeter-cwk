@@ -102,7 +102,11 @@ public class Client {
 
     // Run the client
     @SuppressFBWarnings(value = "DM_DEFAULT_ENCODING", justification = "When reading console, ignore default encoding warning")
+<<<<<<< HEAD
     public void runClient() throws IOException {
+=======
+    private void run() throws IOException {
+>>>>>>> more code cleanup
         BufferedReader reader = null;
         CLFormatter helper = null;
         try {
