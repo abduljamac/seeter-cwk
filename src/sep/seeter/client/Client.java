@@ -97,12 +97,12 @@ public class Client {
         String host = args[1];
         int port = Integer.parseInt(args[2]);
         Client client = new Client(user, host, port);
-        client.run();
+        client.runClient();
     }
 
     // Run the client
     @SuppressFBWarnings(value = "DM_DEFAULT_ENCODING", justification = "When reading console, ignore default encoding warning")
-    void run() throws IOException {
+    public void runClient() throws IOException {
         BufferedReader reader = null;
         CLFormatter helper = null;
         try {
