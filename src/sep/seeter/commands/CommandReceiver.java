@@ -75,20 +75,14 @@ public class CommandReceiver {
         this.draftLines.add(line);
     }
 
-    public void showAllTasks() {
-        for (String draftLine : draftLines) {
-            System.out.println(draftLine);
-        }
-    }
-
     public void send(Message msg) throws IOException {
         this.channel.send(msg);
     }
 
-    public Message receive() throws IOException, ClassNotFoundException {
+   public Message receive() throws IOException, ClassNotFoundException {
         return this.channel.receive();
     }
-    
+   
     public void closeClient() throws IOException {
         if (channel.isOpen()) {
             channel.send(new Bye());
