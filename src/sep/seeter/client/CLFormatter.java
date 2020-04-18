@@ -21,7 +21,7 @@ public class CLFormatter {
         return "\n[Main] Enter command: "
                 + "fetch [mytopic], "
                 + "compose [mytopic], "
-                + "list, "
+                + "list topics, "
                 + "exit"
                 + "\n> ";
     }
