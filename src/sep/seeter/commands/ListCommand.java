@@ -5,10 +5,24 @@
  */
 package sep.seeter.commands;
 
+import java.io.IOException;
+
 /**
  *
  * @author abdul
  */
-public class ListCommand {
+public class ListCommand implements Command {
+    
+    private final CommandReceiver command;
+
+    public ListCommand(CommandReceiver command) {
+        this.command = command;
+    }
+    
+    @Override
+    public void execute() throws IOException {
+
+    }
+   
     
 }

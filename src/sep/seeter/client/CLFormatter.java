@@ -31,6 +31,7 @@ public class CLFormatter {
     return "\nDrafting: " + formatDrafting(topic, lines)
         + "\n[Drafting] Enter command: "
         + "body [mytext], "
+        + "discard, "
         + "send, "
         + "exit"
         + "\n> ";

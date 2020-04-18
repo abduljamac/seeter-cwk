@@ -28,6 +28,8 @@ public class CommandWords {
         commandHolder.put( "body", new BodyCommand(command) );
         commandHolder.put( "send", new SendCommand(command) );
         commandHolder.put( "fetch", new FetchCommand(command) );
+        commandHolder.put( "discard", new DiscardCommand(command) );
+        commandHolder.put( "list", new ListCommand(command) );
     }
 
     public Command getCommandHolder(String cmd) {
