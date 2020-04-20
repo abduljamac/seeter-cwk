@@ -8,6 +8,7 @@ package sep.seeter.commands;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import sep.seeter.mvc.ClientModel;
 import sep.seeter.net.message.Publish;
 
 /**
@@ -15,22 +16,22 @@ import sep.seeter.net.message.Publish;
  * @author abdul
  */
 public class DiscardCommand implements Command {
-    
-    private final CommandReceiver command;
+
+//    private final CommandReceiver command;
+    private final ClientModel clientModel;
     private final List<String> emptyDraftLines;
 
-    public DiscardCommand(CommandReceiver command) {
-        this.command = command;
+    public DiscardCommand(ClientModel clientModel) {
+//        this.command = command;
+        this.clientModel = clientModel;
         this.emptyDraftLines = new ArrayList<>();
     }
-    
 
     @Override
     public void execute() throws IOException {
-        command.setDraftTopic(null);
-        command.setDraftLines(emptyDraftLines);
-        command.setCommandState(CommandState.MAIN);
+        clientModel.setDraftTopic(null);
+        clientModel.setDraftLines(emptyDraftLines);
+        clientModel.setCommandState(CommandState.MAIN);
     }
-   
-    
+
 }

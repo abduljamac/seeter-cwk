@@ -6,6 +6,7 @@
 package sep.seeter.commands;
 
 import java.io.IOException;
+import sep.seeter.mvc.ClientModel;
 import sep.seeter.net.message.SeetsReply;
 import sep.seeter.net.message.SeetsReq;
 
@@ -14,19 +15,20 @@ import sep.seeter.net.message.SeetsReq;
  * @author abdul
  */
 public class FetchCommand implements Command {
-    
-    private final CommandReceiver command;
 
-    public FetchCommand(CommandReceiver command) {
-        this.command = command;
+//    private final CommandReceiver command;
+    private final ClientModel clientModel;
+
+    public FetchCommand(ClientModel clientModel) {
+//        this.command = command;
+        this.clientModel = clientModel;
     }
 
     @Override
     public void execute() throws IOException, ClassNotFoundException {
-        command.send(new SeetsReq( command.getRawArgs()[0] ));
-        SeetsReply rep = (SeetsReply) command.receive();
-        System.out.print(command.formatFetched( command.getRawArgs()[0], rep.users, rep.lines ));
+        clientModel.send(new SeetsReq(clientModel.getRawArgs()[0]));
+        SeetsReply rep = (SeetsReply) clientModel.receive();
+        System.out.print(clientModel.formatFetched(clientModel.getRawArgs()[0], rep.users, rep.lines));
     }
-    
-    
+
 }

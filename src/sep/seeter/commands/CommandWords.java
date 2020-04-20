@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
+import sep.seeter.mvc.ClientModel;
 
 /**
  *
@@ -20,14 +21,14 @@ public final class CommandWords {
     ResourceBundle commands = ResourceBundle.getBundle("sep.seeter.resources/commands-en", locale);
     private final Map<String, Command> commandHolder = new HashMap<>();
 
-    public CommandWords(CommandReceiver command) {
-        commandHolder.put( commands.getString("exit"), new ExitCommand(command) );
-        commandHolder.put( commands.getString("compose"), new ComposeCommand(command) );
-        commandHolder.put( commands.getString("body"), new BodyCommand(command) );
-        commandHolder.put( commands.getString("send"), new SendCommand(command) );
-        commandHolder.put( commands.getString("fetch"), new FetchCommand(command) );
-        commandHolder.put( commands.getString("discard"), new DiscardCommand(command) );
-        commandHolder.put( commands.getString("list"), new ListCommand(command) );
+    public CommandWords(ClientModel clientModel) {
+        commandHolder.put( commands.getString("exit"), new ExitCommand(clientModel) );
+        commandHolder.put( commands.getString("compose"), new ComposeCommand(clientModel) );
+        commandHolder.put( commands.getString("body"), new BodyCommand(clientModel) );
+        commandHolder.put( commands.getString("send"), new SendCommand(clientModel) );
+        commandHolder.put( commands.getString("fetch"), new FetchCommand(clientModel) );
+        commandHolder.put( commands.getString("discard"), new DiscardCommand(clientModel) );
+        commandHolder.put( commands.getString("list"), new ListCommand(clientModel) );
     }
 
 
