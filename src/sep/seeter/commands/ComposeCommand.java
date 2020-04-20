@@ -7,6 +7,7 @@ package sep.seeter.commands;
 
 import java.io.IOException;
 import java.util.List;
+import sep.seeter.mvc.ClientModel;
 
 /**
  *
@@ -14,16 +15,16 @@ import java.util.List;
  */
 public class ComposeCommand implements Command {
 
-    private final CommandReceiver command;
+    private final ClientModel clientModel;
 
-    public ComposeCommand(CommandReceiver command) {
-        this.command = command;
+    public ComposeCommand(ClientModel clientModel) {
+           this.clientModel = clientModel;
     }
 
     @Override
     public void execute() throws IOException {
-      command.setCommandState(CommandState.DRAFTING);
-      command.setDraftTopic(command.getRawArgs()[0]);
+      clientModel.setCommandState(CommandState.DRAFTING);
+      clientModel.setDraftTopic(clientModel.getRawArgs()[0]);
     }
     
 }

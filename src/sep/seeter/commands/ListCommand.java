@@ -6,6 +6,7 @@
 package sep.seeter.commands;
 
 import java.io.IOException;
+import sep.seeter.mvc.ClientModel;
 import sep.seeter.net.message.TopicsReply;
 import sep.seeter.net.message.TopicsReq;
 
@@ -15,17 +16,17 @@ import sep.seeter.net.message.TopicsReq;
  */
 public class ListCommand implements Command {
 
-    private final CommandReceiver command;
+    private final ClientModel clientModel;
 
-    public ListCommand(CommandReceiver command) {
-        this.command = command;
+    public ListCommand(ClientModel clientModel) {
+          this.clientModel = clientModel;
     }
 
     @Override
     public void execute() throws IOException, ClassNotFoundException {
-        command.send(new TopicsReq());
-        TopicsReply rep = (TopicsReply) command.receive();
-        System.out.print(command.formatList( rep.topics ));
+        clientModel.send(new TopicsReq());
+        TopicsReply rep = (TopicsReply) clientModel.receive();
+        System.out.print(clientModel.formatList( rep.topics ));
     }
 
     
