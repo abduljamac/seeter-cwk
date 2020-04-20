@@ -79,9 +79,6 @@ public class Client {
     private final int port;
     private final ClientController clientController;
 
-    Locale locale = new Locale("fr", "FR");
-    ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
-
     public Client(String user, String host, int port) {
         this.user = user;
         this.host = host;

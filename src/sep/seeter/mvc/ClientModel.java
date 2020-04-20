@@ -31,7 +31,7 @@ public class ClientModel extends AbstractModel {
     private List<String> draftLines;
     private final ClientChannel channel;
     
-    Locale locale = new Locale("en", "GB");
+    Locale locale = new Locale("fr", "FR");
     ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
     public ClientModel(ClientChannel channel, String user) {
