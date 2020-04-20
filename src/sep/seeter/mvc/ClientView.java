@@ -27,8 +27,8 @@ import sep.seeter.commands.CommandWords;
  */
 public class ClientView extends AbstractView {
     
-    Locale locale = new Locale("en", "EN");
-    ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter-en", locale);
+    Locale locale = new Locale("en", "GB");
+    ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
     @Override
     protected ClientController getController() {

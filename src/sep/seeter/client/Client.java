@@ -79,8 +79,8 @@ public class Client {
     private final int port;
     private final ClientController clientController;
 
-    Locale locale = new Locale("en", "EN");
-    ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter-en", locale);
+    Locale locale = new Locale("fr", "FR");
+    ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
     public Client(String user, String host, int port) {
         this.user = user;
@@ -93,7 +93,6 @@ public class Client {
 
         if (this.user.isEmpty() || this.host.isEmpty() || checkPort(this.port)) {
             System.err.println("Please check if User, Host or Port has been set!");
-            System.exit(1);
         }
     }
 
