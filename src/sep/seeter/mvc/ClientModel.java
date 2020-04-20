@@ -31,7 +31,7 @@ public class ClientModel extends AbstractModel {
     private List<String> draftLines;
     private final ClientChannel channel;
     
-    Locale locale = new Locale("fr", "FR");
+    Locale locale = new Locale("en", "GB");
     ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
     public ClientModel(ClientChannel channel, String user) {
@@ -113,7 +113,7 @@ public class ClientModel extends AbstractModel {
 
     public  String formatFetched(String topic, List<String> users,
             List<String> fetched) {
-        StringBuilder b = new StringBuilder(clformatter.getString("fetched"));
+        StringBuilder b = new StringBuilder(clformatter.getString("Fetched"));
         b.append(topic);
         Iterator<String> it = fetched.iterator();
         for (String userName : users) {
@@ -127,7 +127,7 @@ public class ClientModel extends AbstractModel {
     }
 
     public String formatList(Set<String> fetched) {
-        StringBuilder b = new StringBuilder(clformatter.getString("topics"));
+        StringBuilder b = new StringBuilder(clformatter.getString("Topics"));
         b.append(fetched);
         b.append("\n");
         return b.toString();

@@ -27,7 +27,7 @@ import sep.seeter.commands.CommandWords;
  */
 public class ClientView extends AbstractView {
     
-    Locale locale = new Locale("fr", "FR");
+    Locale locale = new Locale("en", "GB");
     ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
     @Override
@@ -96,7 +96,11 @@ public class ClientView extends AbstractView {
             clientModel.setRawArgs(rawArgs);
      
             Command command = new CommandWords(clientModel).getCommandHolder(cmd);
-            command.execute();
+            if(command != null){
+                command.execute();
+            } else {
+                System.out.println(clformatter.getString("CommandError"));
+            }
             
         }
     }
