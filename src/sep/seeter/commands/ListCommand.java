@@ -6,7 +6,6 @@
 package sep.seeter.commands;
 
 import java.io.IOException;
-import sep.seeter.client.CLFormatter;
 import sep.seeter.net.message.TopicsReply;
 import sep.seeter.net.message.TopicsReq;
 
@@ -26,7 +25,7 @@ public class ListCommand implements Command {
     public void execute() throws IOException, ClassNotFoundException {
         command.send(new TopicsReq());
         TopicsReply rep = (TopicsReply) command.receive();
-        System.out.print(CLFormatter.formatList( rep.topics ));
+        System.out.print(command.formatList( rep.topics ));
     }
 
     

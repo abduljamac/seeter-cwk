@@ -7,7 +7,11 @@ package sep.seeter.commands;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.Set;
 import sep.seeter.net.channel.ClientChannel;
 import sep.seeter.net.message.Bye;
 import sep.seeter.net.message.Message;
@@ -25,6 +29,9 @@ public class CommandReceiver {
     private String draftTopic;
     private List<String> draftLines;
     private final ClientChannel channel;
+    
+    Locale locale = new Locale("en", "EN");
+    ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter-en", locale);
 
     public CommandReceiver(ClientChannel channel, String user) {
         this.commandState = commandState.MAIN;
@@ -79,15 +86,50 @@ public class CommandReceiver {
         this.channel.send(msg);
     }
 
-   public Message receive() throws IOException, ClassNotFoundException {
+    public Message receive() throws IOException, ClassNotFoundException {
         return this.channel.receive();
     }
-   
+
     public void closeClient() throws IOException {
         if (channel.isOpen()) {
             channel.send(new Bye());
             channel.close();
         }
+    }
+
+    public String formatDrafting(String topic, List<String> lines) {
+        StringBuilder b = new StringBuilder("#");
+        b.append(topic);
+        int i = 1;
+        for (String x : lines) {
+            b.append("\n");
+            b.append(String.format("%12d", i++));
+            b.append("  ");
+            b.append(x);
+        }
+        return b.toString();
+    }
+
+    public  String formatFetched(String topic, List<String> users,
+            List<String> fetched) {
+        StringBuilder b = new StringBuilder(clformatter.getString("fetched"));
+        b.append(topic);
+        Iterator<String> it = fetched.iterator();
+        for (String userName : users) {
+            b.append("\n");
+            b.append(String.format("%12s", userName));
+            b.append("  ");
+            b.append(it.next());
+        }
+        b.append("\n");
+        return b.toString();
+    }
+
+    public String formatList(Set<String> fetched) {
+        StringBuilder b = new StringBuilder(clformatter.getString("topics"));
+        b.append(fetched);
+        b.append("\n");
+        return b.toString();
     }
 
 }
