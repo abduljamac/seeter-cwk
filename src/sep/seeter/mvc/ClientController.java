@@ -17,8 +17,6 @@ import sep.seeter.commands.CommandWords;
  */
 public class ClientController extends AbstractController {
     
-    private CommandWords commandWords;
-
     public ClientController(AbstractModel model, AbstractView view) {
         super(model, view);
     }
