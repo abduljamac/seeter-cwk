@@ -4,9 +4,12 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import sep.seeter.net.message.Bye;
 import sep.seeter.net.message.Publish;
@@ -73,7 +76,8 @@ public class Client {
     private final int port;
     private final CommandReceiver commandReciever;
 
-    public boolean printSplash = true;
+    Locale locale = new Locale("en", "EN");
+    ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter-en", locale);
 
     public Client(String user, String host, int port) {
         this.user = user;
@@ -104,14 +108,11 @@ public class Client {
     @SuppressFBWarnings(value = "DM_DEFAULT_ENCODING", justification = "When reading console, ignore default encoding warning")
     private void runClient() throws IOException {
         BufferedReader reader = null;
-        CLFormatter helper = null;
         try {
             reader = new BufferedReader(new InputStreamReader(System.in));
-            if (this.printSplash = true) {
-                System.out.print(helper.formatSplash(this.user));
-            }
+            System.out.print(MessageFormat.format(clformatter.getString("Splash"), this.user));
             CommandWords commandWords = new CommandWords(commandReciever);
-            runCommandLoop(helper, reader, commandWords);
+            runCommandLoop(reader, commandWords);
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         } finally {
@@ -120,15 +121,15 @@ public class Client {
         }
     }
 
-    private void runCommandLoop(CLFormatter helper, BufferedReader reader, CommandWords commandWords) throws IOException,
+    private void runCommandLoop(BufferedReader reader, CommandWords commandWords) throws IOException,
             ClassNotFoundException {
         
         while (!CommandState.TERMINATED.equals(commandReciever.getCommandState())) {
 
             if (CommandState.MAIN.equals(commandReciever.getCommandState())) {
-                System.out.print(helper.formatMainMenuPrompt());
+                System.out.print(clformatter.getString("MainMenuPrompt"));
             } else {
-                System.out.print(helper.formatDraftingMenuPrompt(commandReciever.getDraftTopic(), commandReciever.getDraftLines()));
+                  System.out.print(MessageFormat.format(clformatter.getString("DraftingMenuPrompt"),  commandReciever.formatDrafting(commandReciever.getDraftTopic(), commandReciever.getDraftLines()) ));
             }
 
             String raw = reader.readLine();

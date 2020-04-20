@@ -6,7 +6,6 @@
 package sep.seeter.commands;
 
 import java.io.IOException;
-import sep.seeter.client.CLFormatter;
 import sep.seeter.net.message.SeetsReply;
 import sep.seeter.net.message.SeetsReq;
 
@@ -15,7 +14,7 @@ import sep.seeter.net.message.SeetsReq;
  * @author abdul
  */
 public class FetchCommand implements Command {
-
+    
     private final CommandReceiver command;
 
     public FetchCommand(CommandReceiver command) {
@@ -26,7 +25,7 @@ public class FetchCommand implements Command {
     public void execute() throws IOException, ClassNotFoundException {
         command.send(new SeetsReq( command.getRawArgs()[0] ));
         SeetsReply rep = (SeetsReply) command.receive();
-        System.out.print(CLFormatter.formatFetched( command.getRawArgs()[0], rep.users, rep.lines ));
+        System.out.print(command.formatFetched( command.getRawArgs()[0], rep.users, rep.lines ));
     }
     
     
