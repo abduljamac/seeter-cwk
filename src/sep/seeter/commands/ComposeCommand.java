@@ -15,11 +15,9 @@ import sep.seeter.mvc.ClientModel;
  */
 public class ComposeCommand implements Command {
 
-//    private final CommandReceiver command;
     private final ClientModel clientModel;
 
     public ComposeCommand(ClientModel clientModel) {
-//        this.command = command;
            this.clientModel = clientModel;
     }
 

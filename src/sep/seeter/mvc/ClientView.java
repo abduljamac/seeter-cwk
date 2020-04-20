@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import sep.mvc.AbstractView;
 import sep.seeter.commands.Command;
@@ -40,7 +42,13 @@ public class ClientView extends AbstractView {
 
     @Override
     public void close() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientModel clientModel = this.getController().getModel();
+        try {
+             System.out.print(MessageFormat.format(clformatter.getString("Exit"), clientModel.getUser()));
+            this.getModel().closeClient();
+        } catch (IOException ex) {
+          System.out.println("error with exit command");
+        }
     }
 
     @Override

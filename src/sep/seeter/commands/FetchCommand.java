@@ -16,11 +16,9 @@ import sep.seeter.net.message.SeetsReq;
  */
 public class FetchCommand implements Command {
 
-//    private final CommandReceiver command;
     private final ClientModel clientModel;
 
     public FetchCommand(ClientModel clientModel) {
-//        this.command = command;
         this.clientModel = clientModel;
     }
 

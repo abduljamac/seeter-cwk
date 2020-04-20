@@ -77,7 +77,6 @@ public class Client {
     private final String user;
     private final String host;
     private final int port;
-//    private final CommandReceiver commandReciever;
     private final ClientController clientController;
 
     Locale locale = new Locale("en", "EN");
@@ -115,51 +114,5 @@ public class Client {
     private void runClient() throws IOException {
         clientController.run();
     }
-
-//    // Run the client
-//    @SuppressFBWarnings(value = "DM_DEFAULT_ENCODING", justification = "When reading console, ignore default encoding warning")
-//    private void runClient() throws IOException {
-//        BufferedReader reader = null;
-//        try {
-//            reader = new BufferedReader(new InputStreamReader(System.in));
-//            System.out.print(MessageFormat.format(clformatter.getString("Splash"), this.user));
-//            CommandWords commandWords = new CommandWords(commandReciever);
-//            runCommandLoop(reader, commandWords);
-//        } catch (Exception ex) {
-//            throw new RuntimeException(ex);
-//        } finally {
-//            reader.close();
-//            commandReciever.closeClient();
-//        }
-//    }
-
-//    private void runCommandLoop(BufferedReader reader, CommandWords commandWords) throws IOException,
-//            ClassNotFoundException {
-//        
-//        while (!CommandState.TERMINATED.equals(commandReciever.getCommandState())) {
-//
-//            if (CommandState.MAIN.equals(commandReciever.getCommandState())) {
-//                System.out.print(clformatter.getString("MainMenuPrompt"));
-//            } else {
-//                  System.out.print(MessageFormat.format(clformatter.getString("DraftingMenuPrompt"),  commandReciever.formatDrafting(commandReciever.getDraftTopic(), commandReciever.getDraftLines()) ));
-//            }
-//
-//            String raw = reader.readLine();
-//            if (raw == null) {
-//                throw new IOException("Input stream closed while reading.");
-//            }
-//
-//            // Trim leading/trailing white space, and split words according to spaces
-//            List<String> split = Arrays.stream(raw.trim().split("\\ ")).map(x -> x.trim()).collect(Collectors.toList());
-//            String cmd = split.remove(0);  // First word is the command keyword
-//            String[] rawArgs = split.toArray(new String[split.size()]);
-//
-//            commandReciever.setRawArgs(rawArgs);
-//
-//            Command command = new CommandWords(commandReciever).getCommandHolder(cmd);
-//            command.execute();
-//            
-//        }
-//    }
 
 }

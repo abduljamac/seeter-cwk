@@ -16,11 +16,9 @@ import sep.seeter.net.message.TopicsReq;
  */
 public class ListCommand implements Command {
 
-//    private final CommandReceiver command;
     private final ClientModel clientModel;
 
     public ListCommand(ClientModel clientModel) {
-//        this.command = command;
           this.clientModel = clientModel;
     }
 

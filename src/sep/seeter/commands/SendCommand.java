@@ -18,13 +18,11 @@ import sep.seeter.net.message.Publish;
  */
 public class SendCommand implements Command {
     
-//    private final CommandReceiver command;
     private List<String> clearDraftLines;
     private final ClientModel clientModel;
     
 
     public SendCommand(ClientModel clientModel) {
-//        this.command = command;
         this.clientModel = clientModel;
         this.clearDraftLines = new ArrayList<>();
     }

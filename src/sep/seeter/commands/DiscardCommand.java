@@ -17,12 +17,10 @@ import sep.seeter.net.message.Publish;
  */
 public class DiscardCommand implements Command {
 
-//    private final CommandReceiver command;
     private final ClientModel clientModel;
     private final List<String> emptyDraftLines;
 
     public DiscardCommand(ClientModel clientModel) {
-//        this.command = command;
         this.clientModel = clientModel;
         this.emptyDraftLines = new ArrayList<>();
     }

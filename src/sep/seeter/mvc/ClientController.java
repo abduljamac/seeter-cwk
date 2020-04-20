@@ -34,17 +34,11 @@ public class ClientController extends AbstractController {
     }
     
     public void run() throws IOException {
-//        commandWords = new CommandWords(this.getModel());
         getView().run();
     }
 
     @Override
     public void shutdown() {
-        try {
-            this.getModel().closeClient();
-        } catch (IOException e) {
-
-        }
         this.getView().close();
     }
 
