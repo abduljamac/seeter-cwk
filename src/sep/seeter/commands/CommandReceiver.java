@@ -30,8 +30,8 @@ public class CommandReceiver {
     private List<String> draftLines;
     private final ClientChannel channel;
     
-    Locale locale = new Locale("en", "EN");
-    ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter-en", locale);
+    Locale locale = new Locale("en", "GB");
+    ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
     public CommandReceiver(ClientChannel channel, String user) {
         this.commandState = commandState.MAIN;

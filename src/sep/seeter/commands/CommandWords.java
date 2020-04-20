@@ -16,8 +16,8 @@ import java.util.ResourceBundle;
  */
 public final class CommandWords {
     
-    Locale locale = new Locale("en", "EN");
-    ResourceBundle commands = ResourceBundle.getBundle("sep.seeter.resources/commands-en", locale);
+    Locale locale = new Locale("en", "GB");
+    ResourceBundle commands = ResourceBundle.getBundle("sep.seeter.resources/commands", locale);
     private final Map<String, Command> commandHolder = new HashMap<>();
 
     public CommandWords(CommandReceiver command) {
