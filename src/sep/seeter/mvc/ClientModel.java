@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sep.seeter.commands;
+package sep.seeter.mvc;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,17 +12,18 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Set;
+import sep.mvc.AbstractModel;
+import sep.seeter.commands.CommandState;
 import sep.seeter.net.channel.ClientChannel;
 import sep.seeter.net.message.Bye;
 import sep.seeter.net.message.Message;
-import sep.seeter.net.message.SeetsReply;
 
 /**
  *
  * @author abdul
  */
-public class CommandReceiver {
-
+public class ClientModel extends AbstractModel {
+    
     private CommandState commandState;
     private String user;
     private String[] rawArgs;
@@ -32,8 +33,9 @@ public class CommandReceiver {
     
     Locale locale = new Locale("en", "EN");
     ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter-en", locale);
+    
 
-    public CommandReceiver(ClientChannel channel, String user) {
+    public ClientModel(ClientChannel channel, String user) {
         this.commandState = commandState.MAIN;
         this.user = user;
         this.rawArgs = rawArgs;
@@ -132,4 +134,6 @@ public class CommandReceiver {
         return b.toString();
     }
 
+
+    
 }

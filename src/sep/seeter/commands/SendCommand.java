@@ -8,6 +8,7 @@ package sep.seeter.commands;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import sep.seeter.mvc.ClientModel;
 import sep.seeter.net.message.Publish;
 
 
@@ -17,22 +18,22 @@ import sep.seeter.net.message.Publish;
  */
 public class SendCommand implements Command {
     
-    private final CommandReceiver command;
     private List<String> clearDraftLines;
+    private final ClientModel clientModel;
     
 
-    public SendCommand(CommandReceiver command) {
-        this.command = command;
+    public SendCommand(ClientModel clientModel) {
+        this.clientModel = clientModel;
         this.clearDraftLines = new ArrayList<>();
     }
     
 
     @Override
     public void execute() throws IOException {
-        command.send(new Publish( command.getUser(), command.getDraftTopic(), command.getDraftLines() ));
-        command.setCommandState(CommandState.MAIN);
-        command.setDraftTopic(null);
-        command.setDraftLines(clearDraftLines);
+        clientModel.send(new Publish( clientModel.getUser(), clientModel.getDraftTopic(), clientModel.getDraftLines() ));
+        clientModel.setCommandState(CommandState.MAIN);
+        clientModel.setDraftTopic(null);
+        clientModel.setDraftLines(clearDraftLines);
     }
     
 }

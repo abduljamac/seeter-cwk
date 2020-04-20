@@ -6,22 +6,23 @@
 package sep.seeter.commands;
 
 import java.io.IOException;
+import sep.seeter.mvc.ClientModel;
 
 /**
  *
  * @author abdul
  */
 public class ExitCommand implements Command {
-   
-    private final CommandReceiver command;
 
-    public ExitCommand(CommandReceiver command) {
-        this.command = command;
+    private final ClientModel clientModel;
+
+    public ExitCommand(ClientModel clientModel) {
+        this.clientModel = clientModel;
     }
-   
+
     @Override
-    public void execute() throws IOException{
-        command.setCommandState(CommandState.TERMINATED);
+    public void execute() throws IOException {
+        clientModel.setCommandState(CommandState.TERMINATED);
     }
-    
+
 }
