@@ -25,7 +25,7 @@ public class DiscardCommand implements Command {
 
     /**
      *
-     * @param clientModel used to access reciever class with all the cohesive 
+     * @param clientModel used to access receiver class with all the cohesive 
      * actions that a command can perform.
      */
     public DiscardCommand(ClientModel clientModel) {

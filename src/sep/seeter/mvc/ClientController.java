@@ -20,7 +20,7 @@ public class ClientController extends AbstractController {
     /**
      *
      * @param model application core data structure.
-     * @param view appropriate resentation of the relevant model data to the user.
+     * @param view appropriate representation of the relevant model data to the user.
      */
     public ClientController(AbstractModel model, AbstractView view) {
         super(model, view);
