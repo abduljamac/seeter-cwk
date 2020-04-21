@@ -19,8 +19,8 @@ public class ClientController extends AbstractController {
 
     /**
      *
-     * @param model
-     * @param view
+     * @param model application core data structure.
+     * @param view appropriate resentation of the relevant model data to the user.
      */
     public ClientController(AbstractModel model, AbstractView view) {
         super(model, view);
@@ -38,7 +38,7 @@ public class ClientController extends AbstractController {
 
     /**
      *
-     * @throws IOException
+     * @throws IOException If an I/O error occurs
      */
     public void run() throws IOException {
         getView().run();

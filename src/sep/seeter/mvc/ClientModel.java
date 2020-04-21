@@ -23,21 +23,22 @@ import sep.seeter.net.message.Message;
  * @author abdul
  */
 public class ClientModel extends AbstractModel {
-    
+
     private CommandState commandState;
     private final String user;
     private String[] rawArgs;
     private String draftTopic;
     private List<String> draftLines;
     private final ClientChannel channel;
-    
+
     Locale locale = new Locale("en", "GB");
     ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
     /**
      * Allocated a new ClientModel object once seeter application is run.
      *
-     * @param channel The server host and port, <i>e.g.</i>, {@code "localhost", 3000}
+     * @param channel The server host and port, <i>e.g.</i>,
+     * {@code "localhost", 3000}
      * @param user Current application user, <i>e.g.</i>, {@code "John"}
      */
     public ClientModel(ClientChannel channel, String user) {
@@ -48,10 +49,11 @@ public class ClientModel extends AbstractModel {
         this.draftLines = new ArrayList<>();
         this.channel = channel;
     }
-    
+
     /**
      * Returns current state of the application.
-     * @return
+     *
+     * @return what's the state the application
      */
     public CommandState getCommandState() {
         return commandState;
@@ -59,7 +61,8 @@ public class ClientModel extends AbstractModel {
 
     /**
      * Sets the desired state of the application.
-     * @param commandState
+     *
+     * @param commandState either Main, Drafting or Terminated
      */
     public void setCommandState(CommandState commandState) {
         this.commandState = commandState;
@@ -67,7 +70,8 @@ public class ClientModel extends AbstractModel {
 
     /**
      * Returns current user.
-     * @return user
+     *
+     * @return name of the user
      */
     public String getUser() {
         return user;
@@ -75,6 +79,7 @@ public class ClientModel extends AbstractModel {
 
     /**
      * Returns what the user has inputed in the command line.
+     *
      * @return user input in the command line
      */
     public String[] getRawArgs() {
@@ -83,7 +88,8 @@ public class ClientModel extends AbstractModel {
 
     /**
      * Sets rawArgs to what the user has inputed in the command line.
-     * @param newRawArgs
+     *
+     * @param newRawArgs user input
      */
     public void setRawArgs(String[] newRawArgs) {
         this.rawArgs = newRawArgs;
@@ -91,6 +97,7 @@ public class ClientModel extends AbstractModel {
 
     /**
      * Returns the the name of the composed topic.
+     *
      * @return name of the topic
      */
     public String getDraftTopic() {
@@ -99,7 +106,8 @@ public class ClientModel extends AbstractModel {
 
     /**
      * Sets the name of the composed topic.
-     * @param draftTopic
+     *
+     * @param draftTopic new seet name for [topic]
      */
     public void setDraftTopic(String draftTopic) {
         this.draftTopic = draftTopic;
@@ -107,7 +115,8 @@ public class ClientModel extends AbstractModel {
 
     /**
      * Returns all the seet lines a topic has.
-     * @return
+     *
+     * @return array of all the seet lines for topic
      */
     public List<String> getDraftLines() {
         return draftLines;
@@ -115,7 +124,8 @@ public class ClientModel extends AbstractModel {
 
     /**
      * Sets the seet line for a topic.
-     * @param draftLines
+     *
+     * @param draftLines new seet line for [topic]
      */
     public void setDraftLines(List<String> draftLines) {
         this.draftLines = draftLines;
@@ -123,26 +133,29 @@ public class ClientModel extends AbstractModel {
 
     /**
      * Adds all the seet lines user has entered into an array.
-     * @param line
+     *
+     * @param line add new seet line to current draft
      */
     public void addDraftLine(String line) {
         this.draftLines.add(line);
     }
-   
+
     /**
-     * Used to send the new drafted seet [topic].
-     * @param msg
-     * @throws IOException
+     * Used to send the new drafted seet [topic] to the server.
+     *
+     * @param msg The message to send
+     * @throws IOException If an I/O error occurs
      */
     public void send(Message msg) throws IOException {
         this.channel.send(msg);
     }
 
     /**
-     * Used to retrieve all the available seets [topics] stored in the server. 
-     * @return
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * Used to retrieve all the available seets [topics] stored in the server.
+     *
+     * @return The received message from the server, if successful.
+     * @throws IOException If an I/O error occurs
+     * @throws ClassNotFoundException Class of serialized object cannot be found
      */
     public Message receive() throws IOException, ClassNotFoundException {
         return this.channel.receive();
@@ -150,7 +163,8 @@ public class ClientModel extends AbstractModel {
 
     /**
      * Used to close the seeter application once user exits.
-     * @throws IOException
+     *
+     * @throws IOException If an I/O error occurs
      */
     public void closeClient() throws IOException {
         if (channel.isOpen()) {
@@ -162,9 +176,11 @@ public class ClientModel extends AbstractModel {
     /**
      * Once a user composes a topic this method is called to display what the
      * current topics name is and all available seet line drafts.
-     * @param topic
-     * @param lines
-     * @return
+     *
+     * @param topic name of the topic
+     * @param lines array of all the seet lines for topic.
+     * @return Topic name and drafted seet line (<i>i.e.</i>, { Drafting:
+     * #topic1 1 hello world } )
      */
     public String formatDrafting(String topic, List<String> lines) {
         StringBuilder b = new StringBuilder("#");
@@ -180,14 +196,16 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     * Once a user choose which seet [topic] they want to retrieve from the server
-     * this method is called to display that seet in readable manor.
-     * @param topic
-     * @param users
-     * @param fetched
-     * @return
+     * Once a user choose which seet [topic] they want to retrieve from the
+     * server this method is called to display that seet in readable manor.
+     *
+     * @param topic name of the topic
+     * @param users name of the user that submited the seet [topic]
+     * @param fetched string "Fetched: #"
+     * @return Topic name, seet list and author name (<i>i.e.</i>, { Fetched:
+     * #topic1 john hello world } )
      */
-    public  String formatFetched(String topic, List<String> users,
+    public String formatFetched(String topic, List<String> users,
             List<String> fetched) {
         StringBuilder b = new StringBuilder(clformatter.getString("Fetched"));
         b.append(topic);
@@ -203,10 +221,12 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     * When a user decides to list all available seet [topic] this method is used
-     * to put all available topics into array and display them.
-     * @param fetched
-     * @return
+     * When a user decides to list all available seet [topic] this method is
+     * used to put all available topics into array and display them.
+     *
+     * @param fetched string "List of Topics: "
+     * @return Array that holds all the seets retrieved from the server.
+     * (<i>i.e.</i>, { List of Topics: [topic1] } )
      */
     public String formatList(Set<String> fetched) {
         StringBuilder b = new StringBuilder(clformatter.getString("Topics"));
@@ -215,6 +235,4 @@ public class ClientModel extends AbstractModel {
         return b.toString();
     }
 
-
-    
 }
