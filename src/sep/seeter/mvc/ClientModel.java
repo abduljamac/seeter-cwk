@@ -25,24 +25,28 @@ import sep.seeter.net.message.Message;
 public class ClientModel extends AbstractModel {
     
     private CommandState commandState;
-    private String user;
+    private final String user;
     private String[] rawArgs;
     private String draftTopic;
     private List<String> draftLines;
     private final ClientChannel channel;
     
+    private String output;
+    
     Locale locale = new Locale("en", "GB");
     ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
     public ClientModel(ClientChannel channel, String user) {
-        this.commandState = commandState.MAIN;
+        this.commandState = CommandState.MAIN;
         this.user = user;
         this.rawArgs = rawArgs;
         this.draftTopic = draftTopic;
         this.draftLines = new ArrayList<>();
         this.channel = channel;
+        
+        this.output = "";
     }
-
+    
     public CommandState getCommandState() {
         return commandState;
     }
@@ -59,8 +63,8 @@ public class ClientModel extends AbstractModel {
         return rawArgs;
     }
 
-    public void setRawArgs(String[] rawArgs) {
-        this.rawArgs = rawArgs;
+    public void setRawArgs(String[] newRawArgs) {
+        this.rawArgs = newRawArgs;
     }
 
     public String getDraftTopic() {
@@ -83,6 +87,15 @@ public class ClientModel extends AbstractModel {
         this.draftLines.add(line);
     }
 
+    public String getOutput() {
+        return output;
+    }
+
+    public void setOutput(String output) {
+        this.output = output;
+    }
+    
+   
     public void send(Message msg) throws IOException {
         this.channel.send(msg);
     }
