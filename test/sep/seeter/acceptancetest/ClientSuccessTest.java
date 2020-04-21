@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sep.seeter.acceptance;
+package sep.seeter.acceptancetest;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -46,7 +46,7 @@ public class ClientSuccessTest {
     }
 
     @Test
-    public void testSingleExitCommand() throws Exception {
+    public void testExitCommand() throws Exception {
         String input = "exit\n";
         ByteArrayInputStream byteIn = new ByteArrayInputStream(input.getBytes("UTF-8"));
         System.setIn(byteIn);
@@ -55,8 +55,8 @@ public class ClientSuccessTest {
     }
 
     @Test
-    public void testChainedCommands_full_successful() throws Exception {
-        String input = "compose B\n body test test\n body test\n send\n fetch B\n exit\n";
+    public void testSuccessullChainCommand() throws Exception {
+        String input = "compose B\n body hello world\n body hello\n send\n fetch B\n exit\n";
         ByteArrayInputStream byteIn = new ByteArrayInputStream(input.getBytes("UTF-8"));
         System.setIn(byteIn);
         client = new Client("test", "localhost", 3000);

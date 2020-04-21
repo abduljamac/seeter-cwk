@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sep.seeter.acceptance;
+package sep.seeter.acceptancetest;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -48,8 +48,8 @@ public class ClientErrorTest {
 
       
     @Test(expected = Exception.class)
-    public void testIncorrectCommand() throws Exception {
-        String input = "wertyui\n"; 
+    public void clientIncorrectCommandTest() throws Exception {
+        String input = "bettlejuice\n"; 
         ByteArrayInputStream byteIn = new ByteArrayInputStream(input.getBytes("UTF-8")); 
         System.setIn(byteIn);
         client = new Client("test", "localhost", 8082);
@@ -65,7 +65,7 @@ public class ClientErrorTest {
         client.runClient();
     }
     @Test(expected = Exception.class)
-    public void testClientSetup_invalidPort() throws Exception {
+    public void checkClientPort() throws Exception {
         String input = "fetch A\n";
         ByteArrayInputStream byteIn = new ByteArrayInputStream(input.getBytes("UTF-8"));
         System.setIn(byteIn);
