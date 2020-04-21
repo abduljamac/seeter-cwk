@@ -21,7 +21,8 @@ public class FetchCommand implements Command {
 
     /**
      *
-     * @param clientModel
+     * @param clientModel used to access reciever class with all the cohesive 
+     * actions that a command can perform.
      */
     public FetchCommand(ClientModel clientModel) {
         this.clientModel = clientModel;
@@ -29,8 +30,8 @@ public class FetchCommand implements Command {
 
     /**
      *
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @throws IOException If an I/O error occurs
+     * @throws ClassNotFoundException Class of serialized object cannot be found
      */
     @Override
     public void execute() throws IOException, ClassNotFoundException {

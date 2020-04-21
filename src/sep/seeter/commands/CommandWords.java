@@ -25,7 +25,8 @@ public final class CommandWords {
    
     /**
      *
-     * @param clientModel
+     * @param clientModel used to access receiver class with all the cohesive 
+     * action that a command can perform.
      */
     public CommandWords(ClientModel clientModel) {
         commandHolder.put( commands.getString("exit"), new ExitCommand(clientModel) );
@@ -38,9 +39,11 @@ public final class CommandWords {
     }
 
     /**
-     *
-     * @param cmd
-     * @return
+     * This method is used to check if their is command that has the same key
+     * to command the user has entered.
+     * 
+     * @param cmd this parameter is the command a user has entered.
+     * @return command if key exists.
      */
     public Command getCommandHolder(String cmd) {
         return commandHolder.get(cmd);

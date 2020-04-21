@@ -28,11 +28,6 @@ import sep.seeter.net.channel.ClientChannel;
  * compile and run, and basic functionality, such as sending and fetching seets
  * to and from an instance of {@link sep.seeter.server.Server}, is working. Try
  * it!
- * <p>
- * The arguments required to run the client correspond to the
- * {@link #set(String, String, int)} method: a user name, and the host name and
- * port at which the server as listening.
- * <p>
  * You can compile and run this client using NetBeans (<i>e.g.</i>, Run
  * {@literal ->} Set Project Configuration {@literal ->} Customize...
  * {@literal ->} New...).
@@ -70,7 +65,7 @@ import sep.seeter.net.channel.ClientChannel;
  * right click the project in the Projects window and select Generate Javadoc.
  * By default, the output is written to the {@code dist/javadoc} directory.
  *
- * @see CLFormatter
+ * 
  */
 public class Client {
 

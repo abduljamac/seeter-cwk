@@ -25,7 +25,8 @@ public class DiscardCommand implements Command {
 
     /**
      *
-     * @param clientModel
+     * @param clientModel used to access reciever class with all the cohesive 
+     * actions that a command can perform.
      */
     public DiscardCommand(ClientModel clientModel) {
         this.clientModel = clientModel;
@@ -34,7 +35,7 @@ public class DiscardCommand implements Command {
 
     /**
      *
-     * @throws IOException
+     * @throws IOException If an I/O error occurs
      */
     @Override
     public void execute() throws IOException {

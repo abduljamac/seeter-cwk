@@ -13,3 +13,7 @@
 Alternativly....
 * Assuming you have compiled using NetBeans (or another method), you can also run Client from the command line.
 * {@code C:\...\seeter>  java -cp build\classes Client userid localhost 8888}
+
+
+#### Testing
+* Requires server to be running.

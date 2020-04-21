@@ -19,7 +19,8 @@ public class BodyCommand implements Command {
 
     /**
      *
-     * @param clientModel
+     * @param clientModel used to access reciever class with all the cohesive 
+     * actions that a command can perform.
      */
     public BodyCommand(ClientModel clientModel) {
           this.clientModel = clientModel;
@@ -28,7 +29,7 @@ public class BodyCommand implements Command {
     /**
      * String body now contains user input.
      *
-     * @throws IOException
+     * @throws IOException If an I/O error occurs
      */
     @Override
     public void execute() throws IOException{
