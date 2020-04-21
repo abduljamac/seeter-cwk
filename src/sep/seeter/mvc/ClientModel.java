@@ -44,8 +44,7 @@ public class ClientModel extends AbstractModel {
     public ClientModel(ClientChannel channel, String user) {
         this.commandState = CommandState.MAIN;
         this.user = user;
-        this.rawArgs = rawArgs;
-        this.draftTopic = draftTopic;
+        this.draftTopic = null;
         this.draftLines = new ArrayList<>();
         this.channel = channel;
     }

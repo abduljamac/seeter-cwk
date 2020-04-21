@@ -19,6 +19,6 @@ public interface Command {
      * @throws IOException  If an I/O error occurs
      * @throws ClassNotFoundException Class of serialized object cannot be found
      */
-    public abstract void execute() throws IOException, ClassNotFoundException;
+    void execute() throws IOException, ClassNotFoundException;
 
 }
