@@ -47,7 +47,7 @@ public class ClientView extends AbstractView {
             System.out.print(MessageFormat.format(clformatter.getString("Exit"), clientModel.getUser()));
             this.getModel().closeClient();
         } catch (IOException ex) {
-            System.out.println("error with exit command");
+            System.out.print( clformatter.getString("CommandError") );
         }
     }
 

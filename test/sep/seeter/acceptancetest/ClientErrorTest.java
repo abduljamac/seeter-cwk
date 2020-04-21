@@ -52,7 +52,7 @@ public class ClientErrorTest {
         String input = "bettlejuice\n"; 
         ByteArrayInputStream byteIn = new ByteArrayInputStream(input.getBytes("UTF-8")); 
         System.setIn(byteIn);
-        client = new Client("test", "localhost", 8082);
+        client = new Client("test", "localhost",  3000);
         client.runClient();
     }
 
@@ -61,7 +61,7 @@ public class ClientErrorTest {
         String input = "fetch A\n";
         ByteArrayInputStream byteIn = new ByteArrayInputStream(input.getBytes("UTF-8"));
         System.setIn(byteIn);
-        client = new Client("", "", 5);
+        client = new Client("", "", 3);
         client.runClient();
     }
     @Test(expected = Exception.class)
@@ -69,7 +69,7 @@ public class ClientErrorTest {
         String input = "fetch A\n";
         ByteArrayInputStream byteIn = new ByteArrayInputStream(input.getBytes("UTF-8"));
         System.setIn(byteIn);
-        client = new Client("Sally", "localhost", -5);
+        client = new Client("Jogn", "localhost", -2);
         client.runClient();
     }
 }
