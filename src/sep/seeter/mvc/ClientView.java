@@ -69,9 +69,9 @@ public class ClientView extends AbstractView {
 
     @Override
     public void update() {
-        System.out.println(getModel().getOutput());
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+  
     private void runCommandLoop(BufferedReader reader, ClientModel clientModel) throws IOException,
             ClassNotFoundException {
 
