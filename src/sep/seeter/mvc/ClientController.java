@@ -16,7 +16,7 @@ import sep.seeter.commands.CommandWords;
  * @author abdul
  */
 public class ClientController extends AbstractController {
-    
+
     public ClientController(AbstractModel model, AbstractView view) {
         super(model, view);
     }
@@ -30,7 +30,7 @@ public class ClientController extends AbstractController {
     public ClientView getView() {
         return (ClientView) super.getView();
     }
-    
+
     public void run() throws IOException {
         getView().run();
     }
@@ -40,4 +40,8 @@ public class ClientController extends AbstractController {
         this.getView().close();
     }
 
+    public void updateOutput(String newText) {
+        this.getModel().setOutput(newText);
+        this.getView().update();
+    }
 }

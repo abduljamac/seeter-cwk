@@ -31,6 +31,8 @@ public class ClientModel extends AbstractModel {
     private List<String> draftLines;
     private final ClientChannel channel;
     
+    private String output;
+    
     Locale locale = new Locale("en", "GB");
     ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
@@ -41,6 +43,8 @@ public class ClientModel extends AbstractModel {
         this.draftTopic = draftTopic;
         this.draftLines = new ArrayList<>();
         this.channel = channel;
+        
+        this.output = "";
     }
     
     public CommandState getCommandState() {
