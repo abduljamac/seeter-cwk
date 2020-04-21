@@ -56,21 +56,11 @@ public class ClientSuccessTest {
 
     @Test
     public void testChainedCommands_full_successful() throws Exception {
-        String input = "compose B\n body test test\n body Test\n send\n fetch B\n exit\n";
+        String input = "compose B\n body test test\n body test\n send\n fetch B\n exit\n";
         ByteArrayInputStream byteIn = new ByteArrayInputStream(input.getBytes("UTF-8"));
         System.setIn(byteIn);
         client = new Client("test", "localhost", 3000);
         client.runClient();
     }
-
-    @Test
-    public void testChainedCommands_altering_discardAndUndo() throws Exception {
-        String input = " list\n comp C\n b test test\n "
-                + "DISCARD\n BoD Test\n unDO\n body new line\n "
-                + "se\n f C\n ex\n";
-        ByteArrayInputStream byteIn = new ByteArrayInputStream(input.getBytes("UTF-8"));
-        System.setIn(byteIn);
-        client = new Client("test", "localhost", 3000);
-        client.runClient();
-    }
+    
 }
