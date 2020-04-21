@@ -57,8 +57,7 @@ public class ClientView extends AbstractView {
         try {
             reader = new BufferedReader(new InputStreamReader(System.in));
             ClientModel clientModel = this.getController().getModel();
-//            System.out.print(MessageFormat.format(clformatter.getString("Splash"), clientModel.getUser()));
-            this.getController().updateOutput(MessageFormat.format(clformatter.getString("Splash"), clientModel.getUser()));
+            System.out.print(MessageFormat.format(clformatter.getString("Splash"), clientModel.getUser()));
             runCommandLoop(reader, clientModel);
         } catch (Exception ex) {
             throw new RuntimeException(ex);
@@ -78,11 +77,9 @@ public class ClientView extends AbstractView {
         while (!CommandState.TERMINATED.equals(clientModel.getCommandState())) {
 
             if (CommandState.MAIN.equals(clientModel.getCommandState())) {
-//                System.out.print(clformatter.getString("MainMenuPrompt"));
-                this.getController().updateOutput(clformatter.getString("MainMenuPrompt"));
+                System.out.print(clformatter.getString("MainMenuPrompt"));
             } else {
-//                System.out.print(MessageFormat.format(clformatter.getString("DraftingMenuPrompt"), clientModel.formatDrafting(clientModel.getDraftTopic(), clientModel.getDraftLines())));
-                this.getController().updateOutput(MessageFormat.format(clformatter.getString("DraftingMenuPrompt"), clientModel.formatDrafting(clientModel.getDraftTopic(), clientModel.getDraftLines())));
+                System.out.print(MessageFormat.format(clformatter.getString("DraftingMenuPrompt"), clientModel.formatDrafting(clientModel.getDraftTopic(), clientModel.getDraftLines())));
             }
 
             String raw = reader.readLine();
@@ -101,8 +98,7 @@ public class ClientView extends AbstractView {
             if (command != null) {
                 command.execute();
             } else {
-//                System.out.println(clformatter.getString("CommandError"));
-                    this.getController().updateOutput(clformatter.getString("CommandError"));
+                System.out.println(clformatter.getString("CommandError"));
             }
 
         }

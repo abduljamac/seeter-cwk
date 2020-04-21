@@ -6,10 +6,7 @@
 package sep.seeter.commands;
 
 import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import sep.seeter.mvc.ClientModel;
 
 /**
@@ -20,16 +17,13 @@ public class ComposeCommand implements Command {
 
     private final ClientModel clientModel;
     
-    Locale locale = new Locale("en", "GB");
-    ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
-
+  
     public ComposeCommand(ClientModel clientModel) {
            this.clientModel = clientModel;
     }
 
     @Override
     public void execute() throws IOException {
-      clientModel.setOutput(MessageFormat.format( clformatter.getString("ComposeError"), clientModel.getRawArgs()[0] ) );
       clientModel.setCommandState(CommandState.DRAFTING);
       clientModel.setDraftTopic(clientModel.getRawArgs()[0]);
     }

@@ -39,9 +39,4 @@ public class ClientController extends AbstractController {
     public void shutdown() {
         this.getView().close();
     }
-
-    public void updateOutput(String newText) {
-        this.getModel().setOutput(newText);
-        this.getView().update();
-    }
 }
