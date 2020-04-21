@@ -12,7 +12,9 @@ import java.util.ResourceBundle;
 import sep.seeter.mvc.ClientModel;
 
 /**
- *
+ * CommandWords Class - This class controls which command is executed depending on
+ * what the user types into the command, it stores each command in HashMap which has
+ * key value pairs that can be used to access a command.
  * @author abdul
  */
 public final class CommandWords {

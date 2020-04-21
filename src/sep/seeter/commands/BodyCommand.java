@@ -9,7 +9,8 @@ import java.io.IOException;
 import sep.seeter.mvc.ClientModel;
 
 /**
- *
+ * Body Command Class - This class in executed when a user wants to add a new draft
+ * line to a topic.
  * @author abdul
  */
 public class BodyCommand implements Command {
@@ -25,6 +26,7 @@ public class BodyCommand implements Command {
     }
 
     /**
+     * String body now contains user input.
      *
      * @throws IOException
      */

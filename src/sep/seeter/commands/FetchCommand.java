@@ -11,7 +11,8 @@ import sep.seeter.net.message.SeetsReply;
 import sep.seeter.net.message.SeetsReq;
 
 /**
- *
+ * Fetch Command Class - This class is executed when a user wants to get seets
+ * [topic] from the server.
  * @author abdul
  */
 public class FetchCommand implements Command {

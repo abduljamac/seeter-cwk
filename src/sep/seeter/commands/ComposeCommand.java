@@ -10,7 +10,8 @@ import java.util.List;
 import sep.seeter.mvc.ClientModel;
 
 /**
- *
+ * Compose Command Class - This class in executed when a user wants to create a 
+ * brand new topic.
  * @author abdul
  */
 public class ComposeCommand implements Command {

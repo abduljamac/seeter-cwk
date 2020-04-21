@@ -6,25 +6,14 @@
 package sep.seeter.commands;
 
 /**
+ * Enumeration class CommandState - This ENUM class declares the 
+ * different states available to the Seeter command line app.
  *
  * @author abdul
  */
 public enum CommandState {
     
-    /**
-     *
-     */
-    MAIN("Main"),
-
-    /**
-     *
-     */
-    DRAFTING("Drafting"),
-
-    /**
-     *
-     */
-    TERMINATED("Terminated");
+    MAIN("Main"), DRAFTING("Drafting"), TERMINATED("Terminated");
     
     private String state;
     

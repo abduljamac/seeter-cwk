@@ -9,7 +9,8 @@ import java.io.IOException;
 import sep.seeter.mvc.ClientModel;
 
 /**
- *
+ * Exit Command Class - This class in executed when the user finished using the
+ * application and wants to exit it.
  * @author abdul
  */
 public class ExitCommand implements Command {

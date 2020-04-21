@@ -11,7 +11,10 @@ import sep.seeter.net.message.TopicsReply;
 import sep.seeter.net.message.TopicsReq;
 
 /**
- *
+ * 
+ * List Command Class - This class is executed when a user wants to list all the
+ * available seets [topic] stored in the server.
+ * 
  * @author abdul
  */
 public class ListCommand implements Command {

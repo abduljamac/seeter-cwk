@@ -13,6 +13,8 @@ import sep.seeter.net.message.Publish;
 
 
 /**
+ * Send Command Class - This class is executed when a user is finished drafting 
+ * a seet [topic] and seet line and want to send it of tot he server.
  *
  * @author abdul
  */
@@ -31,7 +33,7 @@ public class SendCommand implements Command {
     }
     
     /**
-     *
+     * 
      * @throws IOException
      */
     @Override

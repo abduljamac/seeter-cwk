@@ -15,7 +15,7 @@ import java.io.IOException;
 public interface Command {
 
     /**
-     *
+     * A base interface for every command (Initial Blueprint)
      * @throws IOException
      * @throws ClassNotFoundException
      */

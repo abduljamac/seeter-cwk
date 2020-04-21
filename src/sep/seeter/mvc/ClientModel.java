@@ -35,9 +35,10 @@ public class ClientModel extends AbstractModel {
     ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
     /**
+     * Allocated a new ClientModel object once seeter application is run.
      *
-     * @param channel
-     * @param user
+     * @param channel The server host and port, <i>e.g.</i>, {@code "localhost", 3000}
+     * @param user Current application user, <i>e.g.</i>, {@code "John"}
      */
     public ClientModel(ClientChannel channel, String user) {
         this.commandState = CommandState.MAIN;
@@ -49,7 +50,7 @@ public class ClientModel extends AbstractModel {
     }
     
     /**
-     *
+     * Returns current state of the application.
      * @return
      */
     public CommandState getCommandState() {
@@ -57,7 +58,7 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
+     * Sets the desired state of the application.
      * @param commandState
      */
     public void setCommandState(CommandState commandState) {
@@ -65,23 +66,23 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
-     * @return
+     * Returns current user.
+     * @return user
      */
     public String getUser() {
         return user;
     }
 
     /**
-     *
-     * @return
+     * Returns what the user has inputed in the command line.
+     * @return user input in the command line
      */
     public String[] getRawArgs() {
         return rawArgs;
     }
 
     /**
-     *
+     * Sets rawArgs to what the user has inputed in the command line.
      * @param newRawArgs
      */
     public void setRawArgs(String[] newRawArgs) {
@@ -89,15 +90,15 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
-     * @return
+     * Returns the the name of the composed topic.
+     * @return name of the topic
      */
     public String getDraftTopic() {
         return draftTopic;
     }
 
     /**
-     *
+     * Sets the name of the composed topic.
      * @param draftTopic
      */
     public void setDraftTopic(String draftTopic) {
@@ -105,7 +106,7 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
+     * Returns all the seet lines a topic has.
      * @return
      */
     public List<String> getDraftLines() {
@@ -113,7 +114,7 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
+     * Sets the seet line for a topic.
      * @param draftLines
      */
     public void setDraftLines(List<String> draftLines) {
@@ -121,7 +122,7 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
+     * Adds all the seet lines user has entered into an array.
      * @param line
      */
     public void addDraftLine(String line) {
@@ -129,7 +130,7 @@ public class ClientModel extends AbstractModel {
     }
    
     /**
-     *
+     * Used to send the new drafted seet [topic].
      * @param msg
      * @throws IOException
      */
@@ -138,7 +139,7 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
+     * Used to retrieve all the available seets [topics] stored in the server. 
      * @return
      * @throws IOException
      * @throws ClassNotFoundException
@@ -148,7 +149,7 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
+     * Used to close the seeter application once user exits.
      * @throws IOException
      */
     public void closeClient() throws IOException {
@@ -159,7 +160,8 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
+     * Once a user composes a topic this method is called to display what the
+     * current topics name is and all available seet line drafts.
      * @param topic
      * @param lines
      * @return
@@ -178,7 +180,8 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
+     * Once a user choose which seet [topic] they want to retrieve from the server
+     * this method is called to display that seet in readable manor.
      * @param topic
      * @param users
      * @param fetched
@@ -200,7 +203,8 @@ public class ClientModel extends AbstractModel {
     }
 
     /**
-     *
+     * When a user decides to list all available seet [topic] this method is used
+     * to put all available topics into array and display them.
      * @param fetched
      * @return
      */
