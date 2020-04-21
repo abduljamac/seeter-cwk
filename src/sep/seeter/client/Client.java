@@ -107,7 +107,7 @@ public class Client {
     
     // Run the client
     @SuppressFBWarnings(value = "DM_DEFAULT_ENCODING", justification = "When reading console, ignore default encoding warning")
-    private void runClient() throws IOException {
+    public void runClient() throws IOException {
         clientController.run();
     }
 

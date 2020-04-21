@@ -29,7 +29,7 @@ public class ComposeCommand implements Command {
 
     @Override
     public void execute() throws IOException {
-      clientModel.setOutput(MessageFormat.format(clformatter.getString("ComposeError"), clientModel.getUser()));
+      clientModel.setOutput(MessageFormat.format( clformatter.getString("ComposeError"), clientModel.getRawArgs()[0] ) );
       clientModel.setCommandState(CommandState.DRAFTING);
       clientModel.setDraftTopic(clientModel.getRawArgs()[0]);
     }

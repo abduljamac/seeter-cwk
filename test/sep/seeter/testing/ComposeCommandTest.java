@@ -7,6 +7,7 @@ package sep.seeter.testing;
  */
 
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import org.junit.After;
@@ -77,7 +78,7 @@ public class ComposeCommandTest {
 
         composeCommand.execute();
 
-        assertEquals( clformatter.getString("CommandError"), clientModel.getRawArgs()[0], clientModel.getOutput() );
+        assertEquals( MessageFormat.format( clformatter.getString("ComposeError"), clientModel.getRawArgs()[0] ) , clientModel.getOutput() );
 
 
 
