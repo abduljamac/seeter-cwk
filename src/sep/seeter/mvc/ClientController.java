@@ -17,6 +17,11 @@ import sep.seeter.commands.CommandWords;
  */
 public class ClientController extends AbstractController {
 
+    /**
+     *
+     * @param model
+     * @param view
+     */
     public ClientController(AbstractModel model, AbstractView view) {
         super(model, view);
     }
@@ -31,6 +36,10 @@ public class ClientController extends AbstractController {
         return (ClientView) super.getView();
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void run() throws IOException {
         getView().run();
     }

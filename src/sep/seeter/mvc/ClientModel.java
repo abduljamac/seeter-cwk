@@ -34,6 +34,11 @@ public class ClientModel extends AbstractModel {
     Locale locale = new Locale("en", "GB");
     ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
 
+    /**
+     *
+     * @param channel
+     * @param user
+     */
     public ClientModel(ClientChannel channel, String user) {
         this.commandState = CommandState.MAIN;
         this.user = user;
@@ -43,54 +48,109 @@ public class ClientModel extends AbstractModel {
         this.channel = channel;
     }
     
+    /**
+     *
+     * @return
+     */
     public CommandState getCommandState() {
         return commandState;
     }
 
+    /**
+     *
+     * @param commandState
+     */
     public void setCommandState(CommandState commandState) {
         this.commandState = commandState;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUser() {
         return user;
     }
 
+    /**
+     *
+     * @return
+     */
     public String[] getRawArgs() {
         return rawArgs;
     }
 
+    /**
+     *
+     * @param newRawArgs
+     */
     public void setRawArgs(String[] newRawArgs) {
         this.rawArgs = newRawArgs;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDraftTopic() {
         return draftTopic;
     }
 
+    /**
+     *
+     * @param draftTopic
+     */
     public void setDraftTopic(String draftTopic) {
         this.draftTopic = draftTopic;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<String> getDraftLines() {
         return draftLines;
     }
 
+    /**
+     *
+     * @param draftLines
+     */
     public void setDraftLines(List<String> draftLines) {
         this.draftLines = draftLines;
     }
 
+    /**
+     *
+     * @param line
+     */
     public void addDraftLine(String line) {
         this.draftLines.add(line);
     }
    
+    /**
+     *
+     * @param msg
+     * @throws IOException
+     */
     public void send(Message msg) throws IOException {
         this.channel.send(msg);
     }
 
+    /**
+     *
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public Message receive() throws IOException, ClassNotFoundException {
         return this.channel.receive();
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void closeClient() throws IOException {
         if (channel.isOpen()) {
             channel.send(new Bye());
@@ -98,6 +158,12 @@ public class ClientModel extends AbstractModel {
         }
     }
 
+    /**
+     *
+     * @param topic
+     * @param lines
+     * @return
+     */
     public String formatDrafting(String topic, List<String> lines) {
         StringBuilder b = new StringBuilder("#");
         b.append(topic);
@@ -111,6 +177,13 @@ public class ClientModel extends AbstractModel {
         return b.toString();
     }
 
+    /**
+     *
+     * @param topic
+     * @param users
+     * @param fetched
+     * @return
+     */
     public  String formatFetched(String topic, List<String> users,
             List<String> fetched) {
         StringBuilder b = new StringBuilder(clformatter.getString("Fetched"));
@@ -126,6 +199,11 @@ public class ClientModel extends AbstractModel {
         return b.toString();
     }
 
+    /**
+     *
+     * @param fetched
+     * @return
+     */
     public String formatList(Set<String> fetched) {
         StringBuilder b = new StringBuilder(clformatter.getString("Topics"));
         b.append(fetched);

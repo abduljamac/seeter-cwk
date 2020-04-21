@@ -11,7 +11,20 @@ package sep.seeter.commands;
  */
 public enum CommandState {
     
-    MAIN("Main"), DRAFTING("Drafting"),  TERMINATED("Terminated");
+    /**
+     *
+     */
+    MAIN("Main"),
+
+    /**
+     *
+     */
+    DRAFTING("Drafting"),
+
+    /**
+     *
+     */
+    TERMINATED("Terminated");
     
     private String state;
     

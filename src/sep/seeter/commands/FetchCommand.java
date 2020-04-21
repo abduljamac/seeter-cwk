@@ -18,10 +18,19 @@ public class FetchCommand implements Command {
 
     private final ClientModel clientModel;
 
+    /**
+     *
+     * @param clientModel
+     */
     public FetchCommand(ClientModel clientModel) {
         this.clientModel = clientModel;
     }
 
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     @Override
     public void execute() throws IOException, ClassNotFoundException {
         clientModel.send(new SeetsReq(clientModel.getRawArgs()[0]));

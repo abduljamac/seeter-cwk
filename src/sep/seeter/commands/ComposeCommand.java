@@ -17,11 +17,18 @@ public class ComposeCommand implements Command {
 
     private final ClientModel clientModel;
     
-  
+    /**
+     *
+     * @param clientModel
+     */
     public ComposeCommand(ClientModel clientModel) {
            this.clientModel = clientModel;
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Override
     public void execute() throws IOException {
       clientModel.setCommandState(CommandState.DRAFTING);

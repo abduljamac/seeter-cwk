@@ -21,13 +21,19 @@ public class SendCommand implements Command {
     private List<String> clearDraftLines;
     private final ClientModel clientModel;
     
-
+    /**
+     *
+     * @param clientModel
+     */
     public SendCommand(ClientModel clientModel) {
         this.clientModel = clientModel;
         this.clearDraftLines = new ArrayList<>();
     }
     
-
+    /**
+     *
+     * @throws IOException
+     */
     @Override
     public void execute() throws IOException {
         clientModel.send(new Publish( clientModel.getUser(), clientModel.getDraftTopic(), clientModel.getDraftLines() ));

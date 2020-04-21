@@ -16,10 +16,18 @@ public class BodyCommand implements Command {
 
     private final ClientModel clientModel;
 
+    /**
+     *
+     * @param clientModel
+     */
     public BodyCommand(ClientModel clientModel) {
           this.clientModel = clientModel;
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Override
     public void execute() throws IOException{
         String body = String.join( " ", clientModel.getRawArgs() );

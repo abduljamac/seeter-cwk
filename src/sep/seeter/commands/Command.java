@@ -14,6 +14,11 @@ import java.io.IOException;
  */
 public interface Command {
 
+    /**
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public abstract void execute() throws IOException, ClassNotFoundException;
 
 }

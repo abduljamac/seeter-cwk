@@ -21,6 +21,10 @@ public final class CommandWords {
     ResourceBundle commands = ResourceBundle.getBundle("sep.seeter.resources/commands", locale);
     private final Map<String, Command> commandHolder = new HashMap<>();
    
+    /**
+     *
+     * @param clientModel
+     */
     public CommandWords(ClientModel clientModel) {
         commandHolder.put( commands.getString("exit"), new ExitCommand(clientModel) );
         commandHolder.put( commands.getString("compose"), new ComposeCommand(clientModel) );
@@ -31,7 +35,11 @@ public final class CommandWords {
         commandHolder.put( commands.getString("list"), new ListCommand(clientModel) );
     }
 
-
+    /**
+     *
+     * @param cmd
+     * @return
+     */
     public Command getCommandHolder(String cmd) {
         return commandHolder.get(cmd);
     }

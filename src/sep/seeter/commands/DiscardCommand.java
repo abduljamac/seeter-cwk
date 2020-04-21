@@ -20,11 +20,19 @@ public class DiscardCommand implements Command {
     private final ClientModel clientModel;
     private final List<String> emptyDraftLines;
 
+    /**
+     *
+     * @param clientModel
+     */
     public DiscardCommand(ClientModel clientModel) {
         this.clientModel = clientModel;
         this.emptyDraftLines = new ArrayList<>();
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Override
     public void execute() throws IOException {
         clientModel.setDraftTopic(null);
