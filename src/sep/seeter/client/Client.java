@@ -27,8 +27,7 @@ import sep.seeter.net.channel.ClientChannel;
  * early exploratory coding, and it is incomplete and buggy. However, it does
  * compile and run, and basic functionality, such as sending and fetching seets
  * to and from an instance of {@link sep.seeter.server.Server}, is working. Try
- * it!
- * You can compile and run this client using NetBeans (<i>e.g.</i>, Run
+ * it! You can compile and run this client using NetBeans (<i>e.g.</i>, Run
  * {@literal ->} Set Project Configuration {@literal ->} Customize...
  * {@literal ->} New...).
  * <p>
@@ -65,7 +64,7 @@ import sep.seeter.net.channel.ClientChannel;
  * right click the project in the Projects window and select Generate Javadoc.
  * By default, the output is written to the {@code dist/javadoc} directory.
  *
- * 
+ *
  */
 public class Client {
 
@@ -80,11 +79,14 @@ public class Client {
         this.port = port;
 
         ClientModel clientModel = new ClientModel(new ClientChannel(host, port), user);
-        ClientView clientView =  new ClientView();
+        ClientView clientView = new ClientView();
         this.clientController = new ClientController(clientModel, clientView);
 
+        Locale locale = new Locale("en", "GB");
+        ResourceBundle clformatter = ResourceBundle.getBundle("sep.seeter.resources/clformatter", locale);
+
         if (this.user.isEmpty() || this.host.isEmpty() || checkPort(this.port)) {
-            System.err.println("Please check if User, Host or Port has been set!");
+            System.err.println(clformatter.getString("ConfigError"));
         }
     }
 
@@ -99,7 +101,7 @@ public class Client {
         Client client = new Client(user, host, port);
         client.runClient();
     }
-    
+
     // Run the client
     @SuppressFBWarnings(value = "DM_DEFAULT_ENCODING", justification = "When reading console, ignore default encoding warning")
     public void runClient() throws IOException {
