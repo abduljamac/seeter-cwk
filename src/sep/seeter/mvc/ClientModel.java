@@ -20,7 +20,7 @@ import sep.seeter.net.message.Message;
 
 /**
  * The {@code ClientModel} as it acts as the receiver class and holds all the
- * actions required by the concrete command classes {@link sep.seeter.commands.} 
+ * actions required by the concrete command classes {@link sep.seeter.commands} 
  *
  * @author abdul
  */
