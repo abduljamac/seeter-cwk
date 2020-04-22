@@ -13,9 +13,17 @@ import sep.seeter.net.message.Publish;
 
 
 /**
- * Send Command Class - This class is executed when a user is finished drafting 
- * a seet [topic] and seet line and want to send it of tot he server.
- *
+ * The {@code SendCommand} is a concrete implementation of
+ * {@link sep.seeter.mvc.ClientModel}.
+ * 
+ * {@code SendCommand} is executed when a user is finished drafting 
+ * a seet [topic] and seet line and want to send it of to the server 
+ * {@link sep.seeter.server.Server}.
+ * 
+ * {@code SendCommand} once a seet [topic] is sent it sets the state of the 
+ * application is set to MAIN returning the user to the main menu prompt
+ * allowing them to create more seets.
+ * 
  * @author abdul
  */
 public class SendCommand implements Command {

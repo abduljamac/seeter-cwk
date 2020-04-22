@@ -22,6 +22,9 @@ import sep.seeter.commands.CommandState;
 import sep.seeter.commands.CommandWords;
 
 /**
+ * The {@code ClientView} extends the {@link sep.mvc.AbstractView} and
+ * override {@link #getController()} and {@link #getModel()} and return a 
+ * concrete versions of the Controller and Model.
  *
  * @author abdul
  */

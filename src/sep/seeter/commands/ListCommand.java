@@ -11,9 +11,11 @@ import sep.seeter.net.message.TopicsReply;
 import sep.seeter.net.message.TopicsReq;
 
 /**
+ * The {@code ListCommand} is a concrete implementation of
+ * {@link sep.seeter.mvc.ClientModel}.
  * 
- * List Command Class - This class is executed when a user wants to list all the
- * available seets [topic] stored in the server.
+ * {@code ListCommand} is executed when a user wants to list all the
+ * available seets [topic] stored in the server {@link sep.seeter.server.Server}.
  * 
  * @author abdul
  */

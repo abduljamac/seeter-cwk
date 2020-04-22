@@ -9,8 +9,14 @@ import java.io.IOException;
 import sep.seeter.mvc.ClientModel;
 
 /**
- * Body Command Class - This class in executed when a user wants to add a new draft
- * line to a topic.
+ * {@code BodyCommand} is a concrete implementation of
+ * {@link sep.seeter.mvc.ClientModel}.
+ * 
+ * The {@code BodyCommand} is executed when a user wants to add a new seet line
+ * for a topic, it basses body which joins a array of strings and passes it 
+ * add array of all the seet lines for topic.
+ * 
+ *
  * @author abdul
  */
 public class BodyCommand implements Command {

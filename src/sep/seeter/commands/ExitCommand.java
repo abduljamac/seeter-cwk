@@ -9,8 +9,15 @@ import java.io.IOException;
 import sep.seeter.mvc.ClientModel;
 
 /**
- * Exit Command Class - This class in executed when the user finished using the
- * application and wants to exit it.
+ * The {@code ExitCommand} is a concrete implementation of
+ * {@link sep.seeter.mvc.ClientModel}.
+ * 
+ * {@code ExitCommand} is executed when the user finished using the
+ * application and wants to exit it. 
+ * 
+ * {@code ExitCommand} switches the state of the application to TERMINATED thus 
+ * closing Seeter CLI application.
+ * 
  * @author abdul
  */
 public class ExitCommand implements Command {

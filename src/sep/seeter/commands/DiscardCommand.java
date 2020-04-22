@@ -12,10 +12,15 @@ import sep.seeter.mvc.ClientModel;
 import sep.seeter.net.message.Publish;
 
 /**
- * Discard Command Class - This class in executed when a user no longer wants to
+ * The {@code DiscardCommand} is a concrete implementation of
+ * {@link sep.seeter.mvc.ClientModel}.
+ * 
+ * {@code DiscardCommand} is executed when a user no longer wants to
  * send of drafted seet [topic] with seet line, it deleted drafted seet and 
  * returns user back to the Main Prompt.
  * 
+ * Sets the draftTopic to null and draftLines to empty array in {@code ClientModel}
+ *
  * @author abdul
  */
 public class DiscardCommand implements Command {

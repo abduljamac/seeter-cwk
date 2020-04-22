@@ -12,7 +12,9 @@ import sep.mvc.AbstractView;
 import sep.seeter.commands.CommandWords;
 
 /**
- *
+ * The {@code ClientController} is the main controller for the Client. It task
+ * is to deal with all the commands and the connection between the view and model.
+ * 
  * @author abdul
  */
 public class ClientController extends AbstractController {
